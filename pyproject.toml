@@ -18,4 +18,5 @@ exclude = ["_etc*"]
 Repository = "https://github.com/nvfp/TurboTest"
 
 [project.scripts]
-turbotest = "TurboTest.__main__:main"
+turbotest = "TurboTest.__main__:run"
+tt = "TurboTest.__main__:run"
