@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [{name = "Nicholas Valentinus", email = "nicho@scapeville.com"}]
+dependencies = ["mykit==9.1.0"]
 
 [tool.setuptools.packages.find]
 exclude = ["_etc*"]
@@ -18,4 +19,4 @@ exclude = ["_etc*"]
 Repository = "https://github.com/nvfp/TurboTest"
 
 [project.scripts]
-tt = "tt.__main__:main"
+turbotest = "TurboTest.__main__:main"
