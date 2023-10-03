@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "TurboTest"
-version = "0.6.0b1"
+version = "0.7.0b"
 description = "a simple and readable python testing tool"
 readme = "README.md"
 requires-python = ">=3.8"
