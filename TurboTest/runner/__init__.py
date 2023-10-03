@@ -24,7 +24,7 @@ class R:  # Runtime
 
 def run():
 
-    sep = make_separator('─')
+    sep = make_separator('─', 140)
 
     header = f'TurboTest... at {repr(C.CWD)}  ({TimeFmt.full()})\n'
 
