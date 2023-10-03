@@ -1,0 +1,2 @@
+- fails and errors are combined together as "FAIL"
+- To make things more confidently maintainable, TurboTest uses `unittest` (not TurboTest itself) as the testing framework.
