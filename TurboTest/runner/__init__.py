@@ -5,6 +5,7 @@ from mykit.kit.color import Hex, Colored
 from mykit.kit.time import TimeFmt
 from mykit.kit.readable.make_separator import make_separator
 from mykit.kit.readable.time_quick import time_quick
+from mykit.ghactions.eLog import eL
 
 
 class C:  # Constants
@@ -24,11 +25,18 @@ class R:  # Runtime
 
 def run():
 
-    sep = make_separator('─', 140)
+    ## Debugging purposes
+    eL.debug(os.listdir(C.CWD))
 
-    header = f'TurboTest... at {repr(C.CWD)}  ({TimeFmt.full()})\n'
+
+    SEP = make_separator('─', 140)
+
+    ## Header
+    print(f'TurboTest... at {repr(C.CWD)}  ({TimeFmt.full()})')
+    print(SEP)
 
     body = 'okay'
+    print(body)
 
     nTest = R.nPass + R.nFail
 
@@ -41,4 +49,5 @@ def run():
          'executed in '
         f'[core/total: {T_CORE}/{T_TOTAL}] 🔥🔥'
     )
-    print(header + sep + body + sep + footer)
+    print(SEP)
+    print(footer)
