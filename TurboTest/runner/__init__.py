@@ -1,4 +1,4 @@
-import os, re
+import os, re, sys
 import time
 
 from mykit.kit.color import Hex, Colored
@@ -25,6 +25,21 @@ class R:  # Runtime
     details = []
 
 
+def run_tester(module, function):
+
+    # def wrap():
+    #     print(f"locals before: {locals()}")
+    #     exec(f'from {module} import {function}')
+    #     print(f"locals after : {locals()}")
+    # wrap()
+    # vvvvvvvvvvvvvvvvvvv wrapping as shown above still allows access to `module` and `function` within the `locals()` scope
+
+    # exec(f"{function}()")  # Testing purposes
+    print(f"locals before: {locals()}")
+    exec(f'from {module} import {function}')
+    print(f"locals after : {locals()}")
+    exec(f"{function}()")
+
 def recur(dir_pth):
     
     for name, pth in list_dir(dir_pth):
@@ -43,15 +58,33 @@ def recur(dir_pth):
                                 funcs.append(f)
                     print(f'funcs={funcs}  at {repr(pth)}')
 
+                    print(f"DEBUG: pth: {pth}")
+                    module_name_a = os.path.relpath(pth, C.CWD)
+                    module_name_b = os.path.relpath(pth, C.CWD).split(os.sep)
+                    module_name_c = '.'.join(os.path.relpath(pth, C.CWD).split(os.sep))
+                    module_name = '.'.join(os.path.relpath(pth, C.CWD).split(os.sep))[:-3]
+                    print(f"DEBUG: module_name_a: {module_name_a}")
+                    print(f"DEBUG: module_name_b: {module_name_b}")
+                    print(f"DEBUG: module_name_c: {module_name_c}")
+                    print(f"DEBUG: module_name  : {module_name}")
+                    
+                    for ff in funcs:
+                        run_tester(module_name, ff)
+
 def run_tests(cwd):
-    
+
     recur(cwd)
 
 
 def run():
 
     ## Debugging purposes
-    eL.debug(os.listdir(C.CWD))
+    # eL.debug(os.listdir(C.CWD))
+    print(f"DEBUG: C.CWD: {C.CWD}")
+    print(f"DEBUG: os.listdir(C.CWD): {os.listdir(C.CWD)}")
+
+
+    sys.path.append(C.CWD)
 
 
     SEP = make_separator('─', length_backup=110)
