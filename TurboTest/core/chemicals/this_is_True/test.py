@@ -10,7 +10,7 @@ class Test__this_is_True(unittest.TestCase):
     def test_increase_nChemical(self):
 
         n0 = Container.nChemical
-        this_is_True('hi' == 'h1')
+        this_is_True('hi' == 'hi')
         n1 = Container.nChemical
         self.assertEqual(n1-n0, 1)
 
