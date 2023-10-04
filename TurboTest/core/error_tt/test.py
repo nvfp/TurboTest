@@ -1,6 +1,8 @@
 import unittest
 from . import ErrorTT
 
+import sys
+
 
 class Test__ErrorTT(unittest.TestCase):
 
@@ -34,12 +36,24 @@ class Test__ErrorTT(unittest.TestCase):
 
     def test_to_ensure_ErrorTT_accepts_only_1_arg(self):
 
+        raise NotImplementedError('Testing purposes')
+
         with self.assertRaises(TypeError) as ctx: raise ErrorTT('foo', 123)
-        self.assertEqual(str(ctx.exception), "ErrorTT.__init__() takes from 1 to 2 positional arguments but 3 were given")
+        if (sys.version_info.major == 3) and (sys.version_info.minor in [8, 9]):
+            self.assertEqual(str(ctx.exception), "__init__() takes from 1 to 2 positional arguments but 3 were given")
+        elif (sys.version_info.major == 3) and (sys.version_info.minor in [10, 11]):
+            self.assertEqual(str(ctx.exception), "ErrorTT.__init__() takes from 1 to 2 positional arguments but 3 were given")
+        else: raise NotImplementedError('review me')
 
         def f(): raise ErrorTT(1, 2)
         with self.assertRaises(TypeError) as ctx: f()
-        self.assertEqual(str(ctx.exception), "ErrorTT.__init__() takes from 1 to 2 positional arguments but 3 were given")
+        if (sys.version_info.major == 3) and (sys.version_info.minor in [8, 9]):
+            self.assertEqual(str(ctx.exception), "__init__() takes from 1 to 2 positional arguments but 3 were given")
+        elif (sys.version_info.major == 3) and (sys.version_info.minor in [10, 11]):
+            self.assertEqual(str(ctx.exception), "ErrorTT.__init__() takes from 1 to 2 positional arguments but 3 were given")
+        else: raise NotImplementedError('review me')
+
+        print('DEBUG: end - test_to_ensure_ErrorTT_accepts_only_1_arg')
 
 
 if __name__ == '__main__':
