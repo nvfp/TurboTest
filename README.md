@@ -1,6 +1,6 @@
 # *TurboTest🔥*
 
-let's make test readable and simple
+let's make tests readable and simple
 
 
 ## Give it a try

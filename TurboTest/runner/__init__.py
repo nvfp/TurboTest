@@ -9,7 +9,7 @@ from mykit.ghactions.eLog import eL
 from mykit.kit.fileops.simple import list_dir
 from mykit.kit.fileops.nice_io import NiceIO
 
-from ..core.chemicals import Container
+from TurboTest.core.chemicals import Container
 
 
 class C:  # Constants

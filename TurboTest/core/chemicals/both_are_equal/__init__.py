@@ -1,5 +1,5 @@
 from TurboTest.core.chemicals import Container
-from TurboTest.error_tt import ErrorTT
+from TurboTest.core.error_tt import ErrorTT
 
 
 def both_are_equal(x, y):
