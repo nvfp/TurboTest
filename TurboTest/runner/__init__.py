@@ -60,7 +60,7 @@ def run():
     print(f'TurboTest... at {repr(C.CWD)}  ({TimeFmt.full()})')
     print(SEP)
 
-    run_tests()
+    run_tests(C.CWD)
 
     body = 'okay123'
     print(body)
