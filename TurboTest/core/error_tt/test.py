@@ -32,6 +32,10 @@ class Test__ErrorTT(unittest.TestCase):
         except ErrorTT as e:
             self.assertEqual(str(e), 'hi 123')
 
+    def test_to_ensure_ErrorTT_accepts_only_1_arg(self):
+        with self.assertRaises(TypeError) as ctx: raise ErrorTT('foo', 123)
+        self.assertEqual(str(ctx.exception), "ErrorTT.__init__() takes 2 positional arguments but 3 were given")
+
 
 if __name__ == '__main__':
     unittest.main()

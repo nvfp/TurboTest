@@ -3,7 +3,7 @@
 class ErrorTT(Exception):
     """custom exception for TT"""
 
-    def __init__(self, message):
+    def __init__(self, message:str='', /) -> None:
         """
         ## Params
         - `message`: The message that will be printed if the test
