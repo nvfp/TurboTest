@@ -36,7 +36,7 @@ class Test__ErrorTT(unittest.TestCase):
 
     def test_to_ensure_ErrorTT_accepts_only_1_arg(self):
 
-        raise NotImplementedError('Testing purposes')
+        # raise NotImplementedError('Testing purposes')
 
         with self.assertRaises(TypeError) as ctx: raise ErrorTT('foo', 123)
         if (sys.version_info.major == 3) and (sys.version_info.minor in [8, 9]):
