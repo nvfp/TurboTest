@@ -9,6 +9,8 @@ from mykit.ghactions.eLog import eL
 from mykit.kit.fileops.simple import list_dir
 from mykit.kit.fileops.nice_io import NiceIO
 
+from ..core.chemicals import Container
+
 
 class C:  # Constants
 
@@ -35,10 +37,12 @@ def run_tester(module, function):
     # vvvvvvvvvvvvvvvvvvv wrapping as shown above still allows access to `module` and `function` within the `locals()` scope
 
     # exec(f"{function}()")  # Testing purposes
+    print(f"nChem: {repr(Container.nChemical)}")
     print(f"locals before: {locals()}")
     exec(f'from {module} import {function}')
     print(f"locals after : {locals()}")
     exec(f"{function}()")
+    print(f"nChem: {repr(Container.nChemical)}")
 
 def recur(dir_pth):
     
