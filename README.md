@@ -1,5 +1,7 @@
 # *TurboTest🔥* (still under dev)
 
+[![Run tests](https://github.com/nvfp/TurboTest/actions/workflows/run-tests.yml/badge.svg)](https://github.com/nvfp/TurboTest/actions/workflows/run-tests.yml)
+
 let's make tests readable and simple
 
 

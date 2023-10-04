@@ -58,17 +58,17 @@ class Test__both_are_equal(unittest.TestCase):
         x = 1
         y = 2
         with self.assertRaises(ErrorTT) as ctx: both_are_equal(x, y)
-        self.assertEqual(str(ctx.exception), f"x should be equal to y, but they aren't.\n  X: {repr(x)}\n  Y: {repr(y)}")
+        self.assertEqual(str(ctx.exception), f"X should be equal to Y, but they aren't.\n  X: {repr(x)}\n  Y: {repr(y)}")
 
         x = 'hi 123'
         y = 1
         with self.assertRaises(ErrorTT) as ctx: both_are_equal(x, y)
-        self.assertEqual(str(ctx.exception), f"x should be equal to y, but they aren't.\n  X: {repr(x)}\n  Y: {repr(y)}")
+        self.assertEqual(str(ctx.exception), f"X should be equal to Y, but they aren't.\n  X: {repr(x)}\n  Y: {repr(y)}")
 
         x = []
         y = [1]
         with self.assertRaises(ErrorTT) as ctx: both_are_equal(x, y)
-        self.assertEqual(str(ctx.exception), f"x should be equal to y, but they aren't.\n  X: {repr(x)}\n  Y: {repr(y)}")
+        self.assertEqual(str(ctx.exception), f"X should be equal to Y, but they aren't.\n  X: {repr(x)}\n  Y: {repr(y)}")
 
 
 if __name__ == '__main__':
