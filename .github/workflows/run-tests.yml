@@ -24,4 +24,5 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.version }}
+      - run: pip install mykit==10.0.0b8  # delete this soon (after using mykit builder)
       - run: python -m unittest -v

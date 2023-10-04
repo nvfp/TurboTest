@@ -43,7 +43,11 @@ with color:
 
 ## Install
 
-- via PyPI: run `pip install turbotest`
+- via PyPI, run this:
+
+    ```sh
+    pip install turbotest
+    ```
 
 ## Misc
 
@@ -52,7 +56,7 @@ with color:
 - [Changelog](https://nvfp.github.io/mykit/changelog)
 
 
-## Troublshoot
+## Troubleshoot
 
 - Please note that TurboTest minimizes validations for readability and easier maintenance purposes. The input should align with the function's expectations. For example, if the function specifies `x: Exception`, please provide only exception-related input, as there are no checks to catch incorrect inputs.
 
