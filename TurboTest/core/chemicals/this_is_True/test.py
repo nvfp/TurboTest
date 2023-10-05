@@ -1,6 +1,9 @@
 import unittest
 from . import this_is_True
 
+import os
+import tempfile
+
 from TurboTest.core.chemicals import Container
 from TurboTest.core.error_tt import ErrorTT
 
@@ -47,6 +50,19 @@ class Test__this_is_True(unittest.TestCase):
 
         with self.assertRaises(ErrorTT) as ctx: this_is_True(1 == 2)
         self.assertEqual(str(ctx.exception), "The given condition is `False`, expected `True`.")
+    
+    def test_complex_scenario_I(self):
+
+        d = tempfile.mkdtemp()
+        pth = os.path.join(d, 'test_file.txt')
+
+        self.assertEqual(os.path.isfile(pth), False)
+        this_is_True(not os.path.isfile(pth))
+
+        open(pth, 'w').close()
+
+        self.assertEqual(os.path.isfile(pth), True)
+        this_is_True(os.path.isfile(pth))
 
 
 if __name__ == '__main__':
