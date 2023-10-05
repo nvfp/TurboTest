@@ -8,6 +8,7 @@ from mykit.kit.readable.time_quick import time_quick
 from mykit.ghactions.eLog import eL
 from mykit.kit.fileops.simple import list_dir
 from mykit.kit.fileops.nice_io import NiceIO
+from mykit.kit.readable.time_quick import time_quick
 
 from TurboTest.core.chemicals import Container
 
@@ -73,7 +74,11 @@ def recur(dir_pth):
                     print(f"DEBUG: module_name  : {module_name}")
                     
                     for ff in funcs:
+                        tester_t0 = time.time()
                         run_tester(module_name, ff)
+                        tester_t1 = time.time() - tester_t0
+                        print(f'[{TimeFmt.hour()}]: PASS: {module_name}: {ff}  ({Container.nChemical}🧪|{time_quick(tester_t1)})')
+                        Container.clear_chemical()
 
                     ## Make sure there is no duplication of tester names (each tester must have a unique name)
                     
@@ -105,8 +110,8 @@ def run():
 
     run_tests(C.CWD)
 
-    body = 'okay123'
-    print(body)
+    # body = 'okay123'
+    # print(body)
 
     nTest = R.nPass + R.nFail
 
