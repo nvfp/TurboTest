@@ -85,6 +85,8 @@ def recur(dir_pth):
                         tester_t0 = time.time()
                         run_tester(module_name, ff)
                         tester_t1 = time.time() - tester_t0
+                        R.t_core += tester_t1
+                        R.nPass += 1
                         print(f'[{TimeFmt.hour()}]: PASS: {module_name[:-5]}: {ff.replace("_", " ")}  ({Container.nChemical}🧪|{time_quick(tester_t1)})')
                         Container.clear_chemical()
 
