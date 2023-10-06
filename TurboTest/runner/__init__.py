@@ -11,6 +11,8 @@ from mykit.kit.fileops.nice_io import NiceIO
 from mykit.kit.readable.time_quick import time_quick
 
 from TurboTest.core.chemicals import Container
+from TurboTest.runner.printer.print_header import print_header
+from TurboTest.runner.printer.print_footer import print_footer
 
 
 class C:  # Constants
@@ -21,6 +23,7 @@ class C:  # Constants
 
 class R:  # Runtime
 
+    nTest = 0
     nPass = 0
     nFail = 0
     t_core = 0  # in seconds
@@ -85,9 +88,12 @@ def recur(dir_pth):
                         tester_t0 = time.time()
                         run_tester(module_name, ff)
                         tester_t1 = time.time() - tester_t0
+                        time.sleep(0.05)  # artifical execution time (must outside core stopwatch)
                         R.t_core += tester_t1
                         R.nPass += 1
-                        print(f'[{TimeFmt.hour()}]: PASS: {module_name[:-5]}: {ff.replace("_", " ")}  ({Container.nChemical}🧪|{time_quick(tester_t1)})')
+                        # print(f'[{TimeFmt.hour()}]: PASS: {module_name[:-5]}: {ff.replace("_", " ").capitalize()}  ({Container.nChemical}🧪|{time_quick(tester_t1)})')
+                        ## singe underscore "_" -> space " ". double underscore "__" -> single underscore "_".
+                        print(f'[{TimeFmt.hour()}]: PASS: {module_name[:-5]}: {ff.replace("_", " ").replace("  ", "_")}  ({Container.nChemical}🧪|{time_quick(tester_t1)})')
                         Container.clear_chemical()
 
                     ## Make sure there is no duplication of tester names (each tester must have a unique name)
@@ -101,12 +107,51 @@ def run_tests(cwd):
     recur(cwd)
 
 
+def concluder(cwd):
+    """The final decision: If all tests pass, exit 0; otherwise, exit 1 for failures or errors"""
+
+
 def run():
 
-    ## Debugging purposes
-    # eL.debug(os.listdir(C.CWD))
-    print(f"DEBUG: C.CWD: {C.CWD}")
-    print(f"DEBUG: os.listdir(C.CWD): {os.listdir(C.CWD)}")
+    # # return
+
+    # ## Debugging purposes
+    # # eL.debug(os.listdir(C.CWD))
+    # print(f"DEBUG: C.CWD: {C.CWD}")
+    # print(f"DEBUG: os.listdir(C.CWD): {os.listdir(C.CWD)}")
+
+
+    # sys.path.append(C.CWD)
+
+
+    # SEP = make_separator('─', length_backup=110)
+
+    # ## Header
+    # print(f'TurboTest... at {repr(C.CWD)}  ({TimeFmt.full()})')
+    # print(SEP)
+
+    # run_tests(C.CWD)
+
+    # # body = 'okay123'
+    # # print(body)
+
+    # nTest = R.nPass + R.nFail
+
+    # T_CORE = time_quick(R.t_core)
+    # T_TOTAL = time_quick(time.time() - C.T0)
+
+    # # footer = (
+    # #     f'Done, {nTest} test functions '
+    # #     f'[pass/fail: {R.nPass}/{R.nFail}] '
+    # #      'executed in '
+    # #     f'[core/total: {T_CORE}/{T_TOTAL}] 🔥🔥'
+    # # )
+    # print(SEP)
+    # print(footer)
+
+
+
+
 
 
     sys.path.append(C.CWD)
@@ -114,8 +159,7 @@ def run():
 
     SEP = make_separator('─', length_backup=110)
 
-    ## Header
-    print(f'TurboTest... at {repr(C.CWD)}  ({TimeFmt.full()})')
+    print_header(C.CWD)
     print(SEP)
 
     run_tests(C.CWD)
@@ -125,14 +169,8 @@ def run():
 
     nTest = R.nPass + R.nFail
 
-    T_CORE = time_quick(R.t_core)
-    T_TOTAL = time_quick(time.time() - C.T0)
+    T_CORE_FORMATTED = time_quick(R.t_core)
+    T_TOTAL_FORMATTED = time_quick(time.time() - C.T0)
 
-    footer = (
-        f'Done, {nTest} test functions '
-        f'[pass/fail: {R.nPass}/{R.nFail}] '
-         'executed in '
-        f'[core/total: {T_CORE}/{T_TOTAL}] 🔥🔥'
-    )
     print(SEP)
-    print(footer)
+    print_footer(nTest, R.nPass, R.nFail, T_CORE_FORMATTED, T_TOTAL_FORMATTED)

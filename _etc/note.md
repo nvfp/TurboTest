@@ -24,3 +24,8 @@ my_project/        <~~ project root
 └── LICENSE
 └── README.md
 ```
+
+
+~~when reporting string, 10,000 char is max, the middle chars will be replaced with "X more chars"~~  ->  when reporting string, ~~5,000~~ 10,000 char is max, the middle chars will be replaced with "X more chars"
+
+- ~~All reported strings must be represented using the `repr` function.~~  ->  ~~all reported strings should be printed as the original, not as `repr`, for easier debugging~~ -> all reported string should be printed using `repr` to prevent the string from being improperly truncated (if they have escaped chars).
