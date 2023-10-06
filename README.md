@@ -24,7 +24,7 @@ def should_raise_AssertionError_for_input_less_than_25():
 What you will get:
 
 ```txt
-TurboTest-1.0.0 🐍3.10.3  at '/path/to/my_module'  || Monday, Jan 1, 2024, 13:11:21 UTC-0800 ||
+TurboTest-1.0.0 🐍3.10.3  at '/path/to/my_module'  « Monday, Jan 1, 2024, 13:11:21 UTC-0800 »
 ──────────────────────────────────────────────────────────────────────────────────────────────────────
 [22:00:00] PASS: my_function: basic operation  (3🧪|1m2.3s)
 [22:00:02] PASS: my_function: should raise AssertionError for input less than 25  (9🧪|2m2.1s)

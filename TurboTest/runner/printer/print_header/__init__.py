@@ -6,5 +6,5 @@ from TurboTest.constants import __version__
 
 def print_header(cwd):
     
-    header = f'TurboTest-{__version__} 🐍{get_py_ver()}  at {repr(cwd)}  || {TimeFmt.full()} ||'
+    header = f'TurboTest-{__version__} 🐍{get_py_ver()}  at {repr(cwd)}  « {TimeFmt.full()} »'
     print(header)
